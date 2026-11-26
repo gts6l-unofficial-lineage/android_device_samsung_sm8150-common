@@ -1,0 +1,4 @@
+# BPF
+# The 4.14 kernel carries the BPF backports of 5.10.239; Android 17 NetBpfLoad refuses
+# older kernels unless the level is reported here.
+ro.bpf.kver_override=5.10.239

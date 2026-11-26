@@ -1,0 +1,29 @@
+Copyright (C) 2026 The LineageOS Project
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+the files in this repository except in compliance with the License. You may
+obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+This is an unofficial tree. It follows the conventions of, and contains files
+adapted from, the following official LineageOS device trees (branch
+lineage-24.0), all licensed under the Apache License 2.0 by The LineageOS
+Project:
+
+  - android_device_samsung_sm8250-common  (Samsung Qualcomm common layer:
+    config.fs, SEPolicy, Wi-Fi overlay, framework overlays, init layout,
+    recovery init script, sensor NDK bridge shim)
+  - android_device_oneplus_sm8150-common  (SM8150/msmnile platform layer:
+    power hint configuration, board configuration)
+  - android_device_samsung_exynos9820-common and android_device_samsung_beyond2lte
+    (same-generation Samsung conventions, extract-utils usage)
+
+The framework overlay and init.samsung.display.rc carry Android Open Source
+Project headers.
+
+The init scripts, ueventd rules, fstab, properties and VINTF entries are taken
+from the stock Samsung SM-T865 firmware (T865XXU6DXE1 vendor, T865XXU6DXJ1
+boot/recovery/system) and remain the property of their respective owners
+(Samsung, Qualcomm / The Linux Foundation, as stated in their headers).
+
+Written for this port: the pm_proxy_helper and health HAL SEPolicy, and the
+changes to the files above.

@@ -1,0 +1,50 @@
+<!--
+    Stock Samsung HIDL services shipped from the T865XXU6DXE1 vendor image that do not
+    carry their own VINTF fragment (entries taken from the stock vendor manifest.xml),
+    and the HIDL audio HAL built from source (entries as in sm8250-common).
+-->
+<manifest version="2.0" type="device" target-level="7">
+    <hal format="hidl">
+        <name>android.hardware.audio</name>
+        <transport>hwbinder</transport>
+        <fqname>@7.0::IDevicesFactory/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.audio.effect</name>
+        <transport>hwbinder</transport>
+        <fqname>@7.0::IEffectsFactory/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.bluetooth</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IBluetoothHci/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.gatekeeper</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IGatekeeper/default</fqname>
+    </hal>
+    <hal format="hidl" override="true">
+        <name>android.hardware.keymaster</name>
+        <transport>hwbinder</transport>
+        <fqname>@4.0::IKeymasterDevice/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qseecom</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IQSEECom/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.media.omx</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOmx</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IOmxStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</manifest>

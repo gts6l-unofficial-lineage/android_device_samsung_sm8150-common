@@ -1,0 +1,10 @@
+# Android 17 dropped the tee rules for gatekeeper_vendor_data_file. The Samsung TEE
+# gatekeeper (via qseecomd, domain tee) keeps its failure/throttling records in
+# /data/vendor/gatekeeper; without these every credential check fails (-506).
+allow tee gatekeeper_vendor_data_file:dir rw_dir_perms;
+allow tee gatekeeper_vendor_data_file:file create_file_perms;
+
+allow tee sec_efs_file:dir create_dir_perms;
+allow tee sec_efs_file:file create_file_perms;
+
+set_prop(tee, vendor_qseecomd_prop)

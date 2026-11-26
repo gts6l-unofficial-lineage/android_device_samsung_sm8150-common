@@ -1,0 +1,77 @@
+# Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted (subject to the limitations in the
+# disclaimer below) provided that the following conditions are met:
+#
+#    * Redistributions of source code must retain the above copyright
+#      notice, this list of conditions and the following disclaimer.
+#
+#    * Redistributions in binary form must reproduce the above
+#      copyright notice, this list of conditions and the following
+#      disclaimer in the documentation and/or other materials provided
+#      with the distribution.
+#
+#    * Neither the name of The Linux Foundation nor the names of its
+#      contributors may be used to endorse or promote products derived
+#      from this software without specific prior written permission.
+#
+# NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
+# GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
+# HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+# GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+# IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Android fstab file for Samsung SM8150 devices.
+# Physical entries derived from the stock T865XXU6DXE1 vendor/etc/fstab.qcom.
+#
+# Every logical mount point has an ext4 and an EROFS entry so that either image type
+# mounts (first stage tries them in order). The default type of each partition comes
+# first: the release tools use the first entry, e.g. for the addon.d backup in OTAs.
+
+#<src>                                   <mnt_point>            <type>  <mnt_flags and options>                                                                                    <fs_mgr_flags>
+system                                   /system                ext4    ro,barrier=1                                                                                               wait,logical,first_stage_mount
+system                                   /system                erofs   ro                                                                                                         wait,logical,first_stage_mount
+system_ext                               /system_ext            ext4    ro,barrier=1                                                                                               wait,logical,first_stage_mount
+system_ext                               /system_ext            erofs   ro                                                                                                         wait,logical,first_stage_mount
+product                                  /product               ext4    ro,barrier=1                                                                                               wait,logical,first_stage_mount
+product                                  /product               erofs   ro                                                                                                         wait,logical,first_stage_mount
+vendor                                   /vendor                erofs   ro                                                                                                         wait,logical,first_stage_mount
+vendor                                   /vendor                ext4    ro,barrier=1                                                                                               wait,logical,first_stage_mount
+odm                                      /odm                   erofs   ro                                                                                                         wait,logical,first_stage_mount
+odm                                      /odm                   ext4    ro,barrier=1                                                                                               wait,logical,first_stage_mount
+
+# gts6l has no METADATA partition (PIT); like LineageOS exynos9820-common for devices
+# without one, /metadata lives on the OMR partition (verified on device).
+/dev/block/by-name/omr                   /metadata              ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    wait,check,formattable,first_stage_mount
+
+/dev/block/bootdevice/by-name/userdata   /data                  f2fs    noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678,inlinecrypt    latemount,wait,check,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,fsverity
+/dev/block/bootdevice/by-name/cache      /cache                 ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    wait,check
+/dev/block/bootdevice/by-name/persist    /mnt/vendor/persist    ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    wait,check
+/dev/block/by-name/misc                  /misc                  emmc    defaults                                                                                                   defaults,first_stage_mount
+/dev/block/bootdevice/by-name/apnhlos    /vendor/firmware_mnt   vfat    ro,context=u:object_r:firmware_file:s0,shortname=lower,uid=0,gid=1000,dmask=227,fmask=337                 wait
+/dev/block/bootdevice/by-name/modem      /vendor/firmware-modem vfat    ro,context=u:object_r:firmware_file:s0,shortname=lower,uid=0,gid=1000,dmask=227,fmask=337                 wait
+/dev/block/bootdevice/by-name/dsp        /vendor/dsp            ext4    ro,nosuid,nodev,barrier=1                                                                                  wait
+/dev/block/bootdevice/by-name/efs        /mnt/vendor/efs        ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    wait,check
+/dev/block/bootdevice/by-name/sec_efs    /efs                   ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    wait,check
+/dev/block/bootdevice/by-name/dqmdbg     /dqmdbg                ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    wait,check
+/dev/block/bootdevice/by-name/carrier    /carrier               ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic                    defaults,nofail,check
+# Stock also waits on by-name/spu here; that partition does not exist on gts6l and the wait
+# stalls mount_all for ~20 s, so it is left out.
+
+
+# Recovery
+/dev/block/bootdevice/by-name/boot       /boot                  emmc    defaults                                                                                                   recoveryonly
+/dev/block/bootdevice/by-name/recovery   /recovery              emmc    defaults                                                                                                   recoveryonly
+
+# VOLD
+/devices/platform/soc/8804000.sdhci/mmc_host*            auto   auto    defaults                                                                                                   voldmanaged=sdcard:auto,encryptable=userdata
+/devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*    auto   auto    defaults                                                                                                   voldmanaged=usb:auto

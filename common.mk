@@ -246,9 +246,9 @@ PRODUCT_PACKAGES += \
     SPenActions \
     vendor.samsung.hardware.spen-service
 
-# Thermal
+# Thermal (configured per device in /vendor/etc/thermal_info_config.json)
 PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.qti
+    android.hardware.thermal-service.pixel
 
 # Touch
 PRODUCT_PACKAGES += \
@@ -277,6 +277,8 @@ PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel/power-libperfmgr \
+    hardware/google/pixel/pixelstats \
+    hardware/google/pixel/thermal \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/samsung \

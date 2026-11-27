@@ -107,6 +107,9 @@ on post-fs-data
     restorecon /spu
     
 on boot
+    # The thermal HAL is started by its symlink helper on Pixel devices; it is not needed here
+    start vendor.thermal-hal
+
  # Permissions for Touchscreen
     chown system radio /sys/class/sec/tsp/cmd
     chown system system /sys/class/sec/tsp/input/enabled

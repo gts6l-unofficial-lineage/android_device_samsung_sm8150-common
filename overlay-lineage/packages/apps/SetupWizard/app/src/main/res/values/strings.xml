@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- This is not an official LineageOS build -->
+    <string name="os_name" translatable="false">LineageOS (unofficial)</string>
+</resources>

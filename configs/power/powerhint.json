@@ -363,10 +363,9 @@
             "Name": "DoubleTapToWakeEnable",
             "Path": "/sys/class/sec/tsp/cmd",
             "Values": [
-                "aot_enable,0",
-                "aot_enable,1"
-            ],
-            "DefaultIndex": 0
+                "aot_enable,1",
+                "aot_enable,0"
+            ]
         }
     ],
     "Actions": [

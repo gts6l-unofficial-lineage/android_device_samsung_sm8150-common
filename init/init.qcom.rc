@@ -321,6 +321,9 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
+    # Start the power HAL's node writer (libperfmgr waits for this property)
+    setprop vendor.powerhal.init 1
+
     mkdir /data/vendor/misc 01771 system system
 
     # Create directory used for dump collection

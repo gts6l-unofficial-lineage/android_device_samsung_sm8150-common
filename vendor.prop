@@ -41,10 +41,23 @@ vendor.audio_hal.period_size=192
 vendor.voice.path.for.pcm.voip=true
 
 # Bluetooth
-persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac-aptxadaptive
-persist.vendor.qcom.bluetooth.enable.splita2dp=true
+# Profiles are off unless enabled here. A2DP is encoded in software and sent through the
+# Bluetooth audio HAL (bluetooth_audio_policy_configuration_7_0.xml), not offloaded to the DSP.
+bluetooth.profile.a2dp.source.enabled?=true
+bluetooth.profile.asha.central.enabled?=true
+bluetooth.profile.avrcp.target.enabled?=true
+bluetooth.profile.bas.client.enabled?=true
+bluetooth.profile.gatt.enabled?=true
+bluetooth.profile.hfp.ag.enabled?=true
+bluetooth.profile.hid.device.enabled?=true
+bluetooth.profile.hid.host.enabled?=true
+bluetooth.profile.map.server.enabled?=true
+bluetooth.profile.opp.enabled?=true
+bluetooth.profile.pan.nap.enabled?=true
+bluetooth.profile.pan.panu.enabled?=true
+bluetooth.profile.pbap.server.enabled?=true
 persist.vendor.qcom.bluetooth.soc=cherokee
-ro.bluetooth.a2dp_offload.supported=true
+ro.bluetooth.a2dp_offload.supported=false
 ro.vendor.bluetooth.wipower=false
 vendor.qcom.bluetooth.soc=cherokee
 

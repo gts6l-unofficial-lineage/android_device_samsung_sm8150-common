@@ -340,6 +340,15 @@
                 ""
             ],
             "Type": "Property"
+        },
+        {
+            "Name": "DoubleTapToWakeEnable",
+            "Path": "/sys/class/sec/tsp/cmd",
+            "Values": [
+                "aot_enable,0",
+                "aot_enable,1"
+            ],
+            "DefaultIndex": 0
         }
     ],
     "Actions": [
@@ -1014,6 +1023,12 @@
             "Node": "CPUBigPlusClusterMaxFreq",
             "Duration": 3600000,
             "Value": "2534400"
+        },
+        {
+            "PowerHint": "DOUBLE_TAP_TO_WAKE",
+            "Node": "DoubleTapToWakeEnable",
+            "Duration": 0,
+            "Value": "aot_enable,1"
         }
     ]
 }

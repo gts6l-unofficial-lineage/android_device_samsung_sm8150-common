@@ -1,9 +1,10 @@
 Copyright (C) 2026 lunar-seal and the copyright holders named in the individual
 files
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-the files in this repository except in compliance with the License. You may
-obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+Unless a file says otherwise or is listed under "Other terms" below, the files
+in this repository are licensed under the Apache License, Version 2.0 (the
+"License"); you may not use them except in compliance with the License. The
+full text is in the file LICENSE.
 
 This is an unofficial tree. It follows the conventions of, and contains files
 adapted from, the following official LineageOS device trees (branch
@@ -30,3 +31,38 @@ Written for this port by lunar-seal, with the assistance of an AI model (see the
 commit trailers): the pm_proxy_helper and health HAL SEPolicy, the "unofficial"
 strings of the setup wizard and the Updater address, and the changes to the
 files above. They are not the work of The LineageOS Project.
+
+
+Taken from LineageOS applications (lineage-24.0), Apache License 2.0, with
+their headers:
+
+  - overlay-lineage/packages/apps/SetupWizard/app/src/main/res/raw/
+    lineage_wizard_script.xml and wizard_script.xml: the files of the same
+    path in LineageOS/android_packages_apps_SetupWizard at revision
+    1d158e23847b5d9f9523ce6cfc51df2b0c54f6cd, without the "LineageOS features"
+    page (action LINEAGE_SETTINGS).
+  - overlay-no-rro/packages/apps/LineageParts/res/xml/trust_preferences.xml:
+    res/xml/trust_preferences.xml of LineageOS/android_packages_apps_LineageParts
+    at revision 95afa906db26d2005ed8eb57d0d54ff8ee930405, without the
+    "lineagestats" entry.
+
+Other terms
+-----------
+
+Not under the Apache License; the terms in the file header apply and the
+header must be kept:
+
+  - init/fstab.qcom, init/init.qcom.rc, init/init.qcom.recovery.rc,
+    init/init.samsung.bsp.rc, init/init.samsung.rc, init/init.target.rc,
+    init/ueventd.qcom.rc: copyright The Linux Foundation, BSD-style licence
+    (redistribution in source and binary form permitted under the conditions
+    in the header; no patent licence).
+
+Taken from the stock Samsung firmware without a licence statement of their
+own. They are configuration data the stock components need to run; no licence
+is granted for them here beyond what their owners allow:
+
+  - vintf/manifest.xml, vintf/network_manifest.xml (entries from T865XXU6DXE1
+    vendor, etc/vintf)
+  - vendor.prop (values from T865XXU6DXE1 vendor build.prop / default.prop)
+  - proprietary-files.txt (file names of the T865XXU6DXE1 vendor image)

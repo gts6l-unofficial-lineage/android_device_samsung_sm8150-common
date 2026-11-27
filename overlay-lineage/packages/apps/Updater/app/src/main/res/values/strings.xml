@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- This is an unofficial build: ask the port's own update list, not the LineageOS servers -->
+    <string name="updater_server_url" translatable="false">https://raw.githubusercontent.com/gts6l-unofficial-lineage/local_manifests/lineage-24.0/updates/{device}.json</string>
+</resources>

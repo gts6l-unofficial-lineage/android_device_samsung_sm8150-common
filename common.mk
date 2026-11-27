@@ -172,9 +172,15 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(COMMON_PATH)/overlay \
-    $(COMMON_PATH)/overlay-lineage
+    $(COMMON_PATH)/overlay-lineage \
+    $(COMMON_PATH)/overlay-no-rro
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
+
+# Replacements of whole XML files refer to resources of the app itself, which a
+# runtime overlay cannot resolve; these are compiled into the app instead.
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(COMMON_PATH)/overlay-no-rro
 
 PRODUCT_PACKAGES += \
     WifiOverlay

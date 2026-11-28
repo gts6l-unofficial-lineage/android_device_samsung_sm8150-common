@@ -1,2 +1,5 @@
 allow hal_lineage_touch_default vendor_sysfs_touchscreen:dir search;
 allow hal_lineage_touch_default vendor_sysfs_touchscreen_writable:file rw_file_perms;
+
+# The touch HAL probes for S Pen gestures (sec_epen/epen_gestures), which this kernel lacks
+dontaudit hal_lineage_touch_default vendor_sysfs_spen:dir search;

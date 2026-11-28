@@ -1,1 +1,5 @@
 allow vendor_qti_init_shell sysfs:file { read write open };
+
+# Stock init.qcom.post_boot.sh chowns governor tunables and QDSS nodes it does not need to own
+dontaudit vendor_qti_init_shell sysfs_devices_system_cpu:file setattr;
+dontaudit vendor_qti_init_shell vendor_sysfs_qdss_dev:file setattr;

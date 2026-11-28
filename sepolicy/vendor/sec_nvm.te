@@ -1,0 +1,2 @@
+# sec_nvm needs SPSS, which SM8150 lacks; it gives up, after probing its persist directory
+dontaudit vendor_sec_nvm unlabeled:dir search;

@@ -13,3 +13,8 @@ dontaudit vendor_init default_prop:file read;
 
 # UDFPS: init sets the finger mask brightness in /sys/class/lcd/panel
 allow vendor_init vendor_sysfs_display:file w_file_perms;
+
+# Stock init.qcom.rc chowns debugfs nodes and restores labels under /dqmdbg (Samsung debug);
+# neither is needed here
+dontaudit vendor_init debugfs:file setattr;
+dontaudit vendor_init dqmdbg_file:dir relabelto;

@@ -1,0 +1,18 @@
+//
+// SPDX-FileCopyrightText: 2026 lunar-seal
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "vendor.lineage.livedisplay-service.samsung-sm8150",
+    relative_install_path: "hw",
+    init_rc: ["vendor.lineage.livedisplay-service.samsung-sm8150.rc"],
+    vintf_fragments: ["vendor.lineage.livedisplay-service.samsung-sm8150.xml"],
+    srcs: ["service.cpp"],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "vendor.lineage.livedisplay-V1-ndk",
+    ],
+    vendor: true,
+}

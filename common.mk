@@ -226,6 +226,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml
 endif
 
+# LiveDisplay (mDNIe modes, outdoor mode, ACL)
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay-service.samsung-sm8150
+
 # Power (Lineage AIDL libperfmgr HAL). Android 17 no longer pulls libperfmgr in
 # implicitly: export its namespace and install the vendor variant explicitly.
 PRODUCT_PACKAGES += \

@@ -17,3 +17,6 @@ add_hwservice(hal_thermal_server, hal_thermal_samsung_hwservice)
 # Pixel thermal HAL: reads the thermal zones and the Samsung thermistors, sends hints to the power HAL
 r_dir_file(hal_thermal_default, sysfs_thermal)
 hal_client_domain(hal_thermal_default, hal_power)
+
+# servicemanager calls back when IPower registers (lazy lookup)
+binder_call(servicemanager, hal_thermal_default)

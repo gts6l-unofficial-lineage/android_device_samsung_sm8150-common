@@ -107,6 +107,9 @@ on post-fs-data
     restorecon /spu
     
 on boot
+    # Charger nodes written by the Lineage health HAL (charging control) and the GNSS HAL
+    chown system radio /sys/class/power_supply/battery/batt_slate_mode
+    chown system radio /sys/class/power_supply/battery/gps
     # The thermal HAL is started by its symlink helper on Pixel devices; it is not needed here
     start vendor.thermal-hal
 

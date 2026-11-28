@@ -119,7 +119,6 @@ ro.hardware.keystore_desede=true
 
 # Media
 debug.stagefright.omx_default_rank=0
-vendor.mm.enable.qcom_parser=16777215
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so

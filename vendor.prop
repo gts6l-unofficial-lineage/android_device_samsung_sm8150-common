@@ -129,6 +129,9 @@ persist.vendor.radio.atfwd.start=true
 persist.vendor.radio.enableadvancedscan=true
 ro.telephony.default_cdma_sub=0
 ro.vendor.sec.radio.def_network=9
+# The open-source secril_config_svc does not read the default network mode from
+# /efs (stock reads ro.multisim.default_network there): set LTE/WCDMA/GSM directly
+ro.telephony.default_network=9
 ro.vendor.use_data_netmgrd=false
 vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
 

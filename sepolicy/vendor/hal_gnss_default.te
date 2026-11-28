@@ -3,5 +3,5 @@ allow hal_gnss_default vendor_gnss_data_file:fifo_file create_file_perms;
 allow hal_gnss_default vendor_gnss_data_file:file create_file_perms;
 
 # libloc_api_v02 reports GPS activity to the charger (/sys/class/power_supply/battery/gps)
-allow vendor_hal_gnss_qti sysfs_batteryinfo:file w_file_perms;
+allow vendor_hal_gnss_qti sysfs_batteryinfo:file { getattr w_file_perms };
 dontaudit vendor_hal_gnss_qti system_prop:file read;

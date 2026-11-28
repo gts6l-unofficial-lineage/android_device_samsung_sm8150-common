@@ -385,3 +385,9 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libsecnativefeature.so
 vendor/lib/libsnsapi.so
+
+# Configuration read by path (libfloatingfeature, libsec-ril, libdrmfs)
+vendor/etc/floating_feature.xml
+vendor/etc/gpfspath_oem_config.xml
+vendor/etc/mtu-conf.xml
+vendor/etc/pdpcnt-conf.xml

@@ -75,6 +75,11 @@ dalvik.vm.heapstartsize=8m
 dalvik.vm.heaptargetutilization=0.75
 
 # Display
+vendor.display.disable_ext_anim=1
+# The stock firmware switches the composer's idle fallback off; with the source-built
+# composer's defaults (70 ms / 520 ms) the MDP clock and bandwidth votes change on every idle.
+vendor.display.idle_time=0
+vendor.display.idle_time_inactive=0
 debug.sf.disable_backpressure=1
 debug.sf.enable_gl_backpressure=1
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true

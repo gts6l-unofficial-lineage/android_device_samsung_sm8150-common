@@ -31,6 +31,16 @@
             "ResetOnInit": true
         },
         {
+            "Name": "SchedBoost",
+            "Path": "/proc/sys/kernel/sched_boost",
+            "Values": [
+                "1",
+                "2",
+                "0"
+            ],
+            "ResetOnInit": true
+        },
+        {
             "Name": "PowerHALMainState",
             "Path": "vendor.powerhal.state",
             "Values": [
@@ -85,6 +95,18 @@
         }
     ],
     "Actions": [
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "SchedBoost",
+            "Duration": 0,
+            "Value": "2"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "SchedBoost",
+            "Duration": 2000,
+            "Value": "1"
+        },
         {
             "PowerHint": "INTERACTION",
             "Node": "CPULittleClusterMinFreq",

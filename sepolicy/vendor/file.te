@@ -76,3 +76,6 @@ type vendor_sysfs_touchscreen_writable, fs_type, sysfs_type;
 
 # WiFi
 type sysfs_wifi, fs_type, sysfs_type;
+
+# /proc/sys/kernel/sched_boost (power HAL boosts, reset by init.qcom.post_boot.sh)
+type vendor_proc_sched_boost, fs_type, proc_type;

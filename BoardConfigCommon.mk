@@ -207,6 +207,9 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 
+# Release tools: the update package also writes dtbo.img
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
+
 # Verified Boot: vbmeta is flashed with verification and hashtree disabled (flags 3)
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
